@@ -3,9 +3,19 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "department": {
+    "department-ng": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "standalone": false
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/department",
+            "outputPath": "dist/department-ng",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -25,7 +35,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -62,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "department:build:production"
+              "buildTarget": "department-ng:build:production"
             },
             "development": {
-              "buildTarget": "department:build:development"
+              "buildTarget": "department-ng:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "department:build"
+            "buildTarget": "department-ng:build"
           }
         },
         "test": {
@@ -98,6 +109,6 @@
     }
   },
   "cli": {
-    "analytics": "21346050-9ea2-4f87-8b09-94d299fc4e23"
+    "analytics": false
   }
 }
