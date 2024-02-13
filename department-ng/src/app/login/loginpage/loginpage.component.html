@@ -1,9 +1,12 @@
 <div class="body vh-100 vw-100 m-0 p-0">
     <div class="d-flex align-items-center justify-content-center">
         <div class="p-0 bg-light rounded border-0 mt-5">
-            <form #frm="ngForm" class="card border-0 form-div">
-                <div class="card-header bg-1">
-                    <h2 class="row">Login</h2>
+            <form #frm="ngForm" class="card border-0 form-div" (submit)="login(frm)">
+                <div class="card-header bg-1 m-0 border-bottom border-2 border-dark">
+                    <div class="row text-light p-0">
+                        <div class="col-2 p-0"><img src="../../../assets/LOGO_CUSP-removebg-preview.png" class="h-100 w-100" alt="logo"></div>
+                        <h2 class="col text-light mt-2">CUSP</h2>
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="">
@@ -13,13 +16,13 @@
                     </div>
                     <div class="mt-3">
                         <label for="password">Password :</label><br />
-                        <input ngModel #pass="ngModel" type="text" class="form-control" required="" name="password" placeholder="Password" />
-                        <div *ngIf="pass.touched && pass.invalid" class="text-danger">Please Enter Password</div>
+                        <input ngModel #pass="ngModel" minlength="7" type="text" class="form-control" required="" name="password" placeholder="Password" />
+                        <div *ngIf="pass.touched && pass.invalid" class="text-danger">Please Enter Valid Password</div>
                     </div>
                 </div>
                 <a href="/forgot-password" class="text-center m-2 text-decoration-none">Forgot Password</a>
-                <div class="card-footer m-0 row bg-1">
-                    <input type="submit" class="btn col" placeholder="Login"/>
+                <div class="card-footer m-0 row bg-1  border-top border-2 border-dark">
+                    <button type="submit" class="btn text-light"><p class="h4 m-0 p-0">Login</p></button>
                 </div>
             </form>
         </div>
