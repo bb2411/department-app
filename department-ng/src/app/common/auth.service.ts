@@ -10,13 +10,15 @@ import { baseurl } from './constant';
 export class AuthService {
   login(userid:number,password:string):Observable<Auth>{
     const headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
+    headers.append('Content-Type', 'application/form-data');
+    const form_data=new FormData();
+    form_data.set('userid',String(userid));
+    form_data.set('password',password);
     const params = new HttpParams()
       .set('userid', userid)
       .set('password', password);
 
-    return this.http.post<Auth>(baseurl+"/auth/login", params, { headers: headers });
+    return this.http.post<Auth>(baseurl+"/auth/login", form_data, { headers: headers });
   }
   constructor(private http:HttpClient) { }
 }

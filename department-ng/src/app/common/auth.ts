@@ -1,7 +1,8 @@
 export interface Auth {
-    status:number;
-    msg:string;
-    authstatus:boolean;
-    usertype:string;
-    token:string;
+    status:any;
+    msg:any;
+    authstatus:any;
+    usertype:any;
+    token:any;
+    userid:any;
 }

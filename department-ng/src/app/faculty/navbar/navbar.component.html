@@ -1,0 +1,32 @@
+<nav>
+  <div class="row bg-dm-1 m-0 p-1 justify-content-center" style="height: 100px;">
+    <div class="col-1 justify-content-center">
+      <img src="../../assets/LOGO_CUSP-removebg-preview.png" class="h-50" alt="">
+    </div>
+    <div class="col-4 text-left p-2 justify-content-center">
+      <h4 class="text-left text-gray m-3">Computer Engineering Department</h4>
+    </div>
+  </div>
+  <div class="navheader row bg-dm-2 m-0 p-0 justify-content-center mt-0" style="height: 50px;">
+    <div class="col-2 h-100 link offset-">
+      <button [routerLink]="['attandance']" routerLinkActive="active" class="h6 border h-100 border-0">Attandance</button>
+    </div>
+    <div class="col-1 link h-100 text-center h-100 p-2 m-0 pt-2 mt-2">|</div>
+    <div class="col-2 link h-100">
+      <button routerLink="practicals" routerLinkActive="active" class="h6 border h-100 border-0">Practicals</button>
+    </div>
+    <div class="col-1 link h-100 text-center h-100 p-2 m-0 pt-2 mt-2">|</div>
+    <div class="col-2 link h-100">
+      <button routerLink="notice-board" routerLinkActive="active" class="h6 border h-100 border-0">Notice Board</button>
+    </div>
+    <div class="col-1 link h-100 text-center h-100 p-2 m-0 pt-2 mt-2">|</div>
+    <div class="col-2 link h-100">
+      <button routerLink="results" routerLinkActive="active" class="h6 border h-100 border-0">Results</button>
+    </div>
+    <div class="col-1 link h-100text-center h-100 p-2 m-0 pt-2 mt-2">|</div>
+    <div class="col-2 link h-100">
+      <button routerLink="accounts" routerLinkActive="active" class="h6 border h-100 border-0">Account</button>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>

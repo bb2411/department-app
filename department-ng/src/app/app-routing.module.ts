@@ -1,11 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FacultyComponent } from './faculty/faculty.component';
 
 const routes: Routes = [
   {
     path:'',
     redirectTo:'auth',
     pathMatch:'full'
+  },
+  {
+    path:"faculty",
+    component:FacultyComponent,
+    loadChildren:()=>import("./faculty/faculty.module").then(m=>m.FacultyModule)
   },
   {
     path:'auth',
@@ -18,3 +24,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

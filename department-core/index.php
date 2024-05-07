@@ -5,11 +5,15 @@
     header("Access-Control-Allow-Credentials: true");
     $requesturi=strtok($_SERVER['REQUEST_URI'],'?');
     $routes=[
-        "/department_app/department-core/auth/login"=>"./auth/login.php"
+        "/department_app/department-core/faculty/put_attandance_data"=>"./faculty/record_attandance.php",
+        "/department_app/department-core/auth/verify"=>"./auth/verify.php",
+        "/department_app/department-core/auth/login"=>"./auth/login.php",
+        "/department_app/department-core/faculty/get_attandance_data"=>"./faculty/getattandancedata.php",
+        "/department_app/department-core/createsession"=>"./createsession.php"
     ];
     if(isset($routes[$requesturi])){
         include $routes[$requesturi];
     }else{
         echo "404 not found";
     }
-?>
+?>0

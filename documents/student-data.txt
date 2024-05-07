@@ -1,0 +1,29 @@
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('John Doe', 'Computer', 'john.doe@example.com', 1234567890, 9876543210, 9876543211, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Jane Smith', 'Computer', 'jane.smith@example.com', 2345678901, 8765432109, 8765432108, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Alice Johnson', 'Computer', 'alice.johnson@example.com', 3456789012, 7654321098, 7654321097, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Bob Williams', 'Computer', 'bob.williams@example.com', 4567890123, 6543210987, 6543210986, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Emily Brown', 'Computer', 'emily.brown@example.com', 5678901234, 5432109876, 5432109875, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Michael Miller', 'Computer', 'michael.miller@example.com', 6789012345, 4321098765, 4321098764, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Sophia Davis', 'Computer', 'sophia.davis@example.com', 7890123456, 3210987654, 3210987653, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Matthew Wilson', 'Computer', 'matthew.wilson@example.com', 8901234567, 2109876543, 2109876542, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Olivia Martinez', 'Computer', 'olivia.martinez@example.com', 9012345678, 1098765432, 1098765431, 22);
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
+VALUES ('Daniel Taylor', 'Computer', 'daniel.taylor@example.com', 1234567890, 9876543210, 9876543211, 22);
