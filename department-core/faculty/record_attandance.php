@@ -43,6 +43,6 @@
             die;
         }
     }
-    echo json_encode(array("message"=>"Attandance Recorder Successfully","status"=>200,"data"=>$lectureid));
+    echo json_encode(array("message"=>"Attandance Recorded Successfully","status"=>200,"data"=>$lectureid));
     die;
 ?>
