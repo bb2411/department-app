@@ -10,12 +10,21 @@ import { Facultyresponse } from './../facultyresponse';
   providedIn: 'root'
 })
 export class GetAttandanceDataService {
+  public subjects:any[]=[];
+  getsubject(){
+    return this.subjects;
+  }
+  
   get_attandane_data(pid:any):Observable<Faculty>{
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/x-www-form-urlencoded');
     const formData = new FormData();
     formData.append("fac_id", pid);
-    return this.backendcall.post<Faculty>(baseurl+"/faculty/get_attandance_data",formData,{headers:headers});
+    let response=this.backendcall.post<Faculty>(baseurl+"/faculty/get_attandance_data",formData,{headers:headers})
+    response.subscribe((res)=>{
+      this.subjects=res.subjects;
+    })
+    return response;
   }
   record_attandance(time:any,students:any,batch:any,subject:any,Division:any,facid:any,topic:any):Observable<Facultyresponse>{
     const headers = new HttpHeaders();

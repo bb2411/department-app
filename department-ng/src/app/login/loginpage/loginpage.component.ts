@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from '../../common/auth';
 import { AuthService } from '../../common/auth.service';
+import { FacultydataService } from '../../faculty/controller/facultydata.service';
 @Component({
   selector: 'app-loginpage',
   templateUrl: './loginpage.component.html',
   styleUrl: './loginpage.component.css'
 })
 export class LoginpageComponent {
+
   responsemessage='';
   login(form:any){
     this.auth.login(form.value.userid,form.value.password).subscribe((response:Auth)=>{
@@ -19,6 +21,7 @@ export class LoginpageComponent {
         if(usertype=="admin"){
           return;
         }else if(usertype=="faculty"){
+          FacultydataService.userid=response.userid;
           this.route.navigate(["faculty"])
         }else if(usertype=="student"){
           return;
@@ -31,5 +34,5 @@ export class LoginpageComponent {
       }
     });
   }
-  constructor(private auth:AuthService,private route:Router){}
+  constructor(private auth:AuthService,private route:Router,private fd:FacultydataService){}
 }
