@@ -27,3 +27,33 @@ VALUES ('Olivia Martinez', 'Computer', 'olivia.martinez@example.com', 9012345678
 
 INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id)
 VALUES ('Daniel Taylor', 'Computer', 'daniel.taylor@example.com', 1234567890, 9876543210, 9876543211, 22);
+
+
+
+
+
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id, division) VALUES
+('John Doe', 'Computer Science', 'john.doe1@example.com', 1111111111, 2222222222, 3333333333, 23, 'A'),
+('Alice Smith', 'Engineering', 'alice.smith1@example.com', 4444444444, 5555555555, 6666666666, 23, 'B'),
+('Bob Johnson', 'Mathematics', 'bob.johnson1@example.com', 7777777777, 8888888888, 9999999999, 23, 'A'),
+('Emily Davis', 'Physics', 'emily.davis1@example.com', 123456780, 234568901, 345678012, 23, 'B'),
+('Michael Wilson', 'Biology', 'michael.wilson1@example.com', 976543210, 765432109, 654321098, 23, 'A'),
+('Sophia Lee', 'Chemistry', 'sophia.lee1@example.com', 654321987, 543210876, 432108765, 23, 'B'),
+('David Brown', 'Literature', 'david.brown1@example.com', 320987654, 210976543, 198765432, 23, 'A'),
+('Emma Martinez', 'History', 'emma.martinez1@example.com', 876543210, 876532109, 654321098, 23, 'B'),
+('Olivia Garcia', 'Art', 'olivia.garcia1@example.com', 654210987, 543109876, 432098765, 23, 'A'),
+('William Rodriguez', 'Music', 'william.rodriguez1@example.com', 123567892, 234678901, 456789012, 23, 'B');
+
+
+INSERT INTO student (name, course, email, contact_student, contact_father, contact_mother, sem_id, division) VALUES
+('Sarah Anderson', 'Computer Science', 'sarah.anderson1@example.com', 11111112, 22222223, 33333334, 24, 'A'),
+('Daniel Thomas', 'Engineering', 'daniel.thomas1@example.com', 44444445, 55555556, 66666667, 24, 'B'),
+('Ava White', 'Mathematics', 'ava.white1@example.com', 77777778, 88888889, 99999990, 24, 'A'),
+('Liam Taylor', 'Physics', 'liam.taylor1@example.com', 12345683, 23456792, 34589013, 24, 'B'),
+('Ethan Clark', 'Biology', 'ethan.clark1@example.com', 9875421, 87654310, 76521099, 24, 'A'),
+('Mia Hernandez', 'Chemistry', 'mia.hernandez1@example.com', 65432198, 54321087, 43298766, 24, 'B'),
+('James King', 'Literature', 'james.king1@example.com', 32109865, 21098704, 10965433, 24, 'A'),
+('Amelia Scott', 'History', 'amelia.scott1@example.com', 98765421, 87654310, 76521099, 24, 'B'),
+('Alexander Green', 'Art', 'alexander.green1@example.com', 65432098, 5432187, 43298766, 24, 'A'),
+('Charlotte Adams', 'Music', 'charlotte.adams1@example.com', 123456784, 2345693, 34589014, 24, 'B');

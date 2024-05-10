@@ -21,5 +21,6 @@
         }
     }
     $response = array('status' => 200, "batches" => $batch, "subjects" => $subject);
-
+    echo json_encode($response);
+    die;
 ?>

@@ -95,6 +95,10 @@ export class AttandanceComponent implements OnInit {
         let message=response.message+"  ,lecture ID is "+response.data;
         this.message=message;
         this.student=[];
+        this.attandancedata=[];
+        this.attandancedatamain=[];
+        this.attandancelist.clear();
+
         this.selectbatch=0;
         this.selectdivison='';
         this.topic='';

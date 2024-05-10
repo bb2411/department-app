@@ -19,12 +19,14 @@ export class FacultydataService {
     return this.batch;
   }
   getdataapi(facid:any){
+    console.log(facid+"get data");
     const headers = new HttpHeaders();
     headers.set('Content-Type', 'application/x-www-form-urlencoded');
     const formData = new FormData();
     formData.append("facid", facid);
     let response=this.api.post<res>(baseurl+"/faculty/getdata",formData,{headers:headers});
     response.subscribe((res:res)=>{
+      console.log("response")
       console.log(res)
       if(res.status==200){
         this.subject=res.subjects;
@@ -32,11 +34,12 @@ export class FacultydataService {
         console.log(response);
       }
     })
+    return true;
   }
   constructor(private api:HttpClient) { }
 }
 interface res{
   status:any;
-  batches:any[];
-  subjects:any[];
+  batches:any;
+  subjects:any;
 }

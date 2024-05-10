@@ -5,6 +5,7 @@
     header("Access-Control-Allow-Credentials: true");
     $requesturi=strtok($_SERVER['REQUEST_URI'],'?');
     $routes=[
+        "/department_app/department-core/faculty/addpractical"=>"./faculty/addpractical.php",
         "/department_app/department-core/faculty/getdata"=>"./faculty/getdata.php",
         "/department_app/department-core/faculty/showattandance"=>"./faculty/showattandance.php",
         "/department_app/department-core/faculty/put_attandance_data"=>"./faculty/record_attandance.php",
