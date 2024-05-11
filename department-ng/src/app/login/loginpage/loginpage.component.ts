@@ -20,6 +20,7 @@ export class LoginpageComponent {
         localStorage.setItem("usertype",response.usertype);
         localStorage.setItem("token",response.token);
         let usertype:String=response.usertype;
+        console.log(response);
         if(usertype=="admin"){
           return;
         }else if(usertype==="faculty"){
@@ -31,7 +32,7 @@ export class LoginpageComponent {
           StorageService.settoken(response.token);
           this.storage.setuserid(response.userid);
           FacultydataService.userid=response.userid;
-          this.route.navigate(["student"])
+          this.route.navigate(["student/attandance"])
         }
       }else if(response.status==400){
         this.responsemessage=response.msg;

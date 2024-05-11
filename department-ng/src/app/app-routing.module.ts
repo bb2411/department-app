@@ -18,7 +18,6 @@ const routes: Routes = [
   },
   {
     path:"student",
-    canActivate:[validateGuard],
     component:StudentComponent,
     loadChildren:()=>import("./student/student.module").then(m=>m.StudentModule)
   },

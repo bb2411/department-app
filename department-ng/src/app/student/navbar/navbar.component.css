@@ -1,0 +1,9 @@
+button{
+    background: none;
+}
+.link{
+    width: max-content;
+}
+.active{
+    border-bottom: 2px solid black !important;
+}

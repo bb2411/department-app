@@ -24,7 +24,7 @@ if($result->num_rows>0){
                 "keypass"=>encryptData("bhargavdev123456789")
             ];
             $tok=JWT::encode($payload,$secretkey,'HS512');
-            $res=json_encode(["status"=>"200","msg"=>"user_founded","authstatus"=>true,"usertype"=>"faculty","token"=>$tok,"userid"=>$username]);
+            $res=json_encode(["status"=>"200","msg"=>"user_founded","authstatus"=>true,"usertype"=>$row['user_type'],"token"=>$tok,"userid"=>$username]);
             echo $res;
             die;
         }else{

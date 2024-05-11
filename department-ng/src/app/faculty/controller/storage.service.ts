@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class StorageService {
   private static token:any;
-  public static userid: any;
+  public static userid=100003;
   static settoken(token:any){
     StorageService.token=token;
   }
