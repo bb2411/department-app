@@ -9,7 +9,7 @@
     $subject=$_REQUEST['subject'];
     $batch=$_REQUEST['batch'];
     $division=$_REQUEST['division'];
-    $description=$_REQUEST['batch'];
+    $description=$_REQUEST['topic'];
     $currentDate = date("Y-m-d");
     $subjectid=0;
     $result=$conn->query("select subject_code from subject where subject_name='$subject'");
