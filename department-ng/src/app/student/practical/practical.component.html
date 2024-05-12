@@ -3,6 +3,15 @@
         {{message}}
     </div>
 </div>
+
+<div *ngIf="viewimage" class="row m-5 mb-0 mt-2 text-dark justify-content-center bg-dm-3">
+    <div class="col-3 justify-content-center text-center m-3">
+        <img [src]="imageurl" alt="practical image unable to display" class="h-100 w-100">
+    </div>
+    <div class="col-3 justify-content-center text-left m-3">
+        <p>Submit Date :{{practicalselected?.submit_date}}</p>
+    </div>
+</div>
 <div *ngIf="uploadstate" class="row m-5 mb-0 mt-2 text-dark justify-content-center bg-dm-3">
     <div class="col-3 justify-content-center text-center m-3">
         <input type="file" (change)="FileInput($event)" accept="image/png, image/jpeg, image/jpg" [(ngModel)]="filetoupload" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" aria-label="Upload">
@@ -11,6 +20,7 @@
         <button class="btn btn-success" (click)="uploadimage($event)" [disabled]="!isFileValid()">Submit Practical</button>
     </div>
 </div>
+
 <div class="row m-5 mt-1">
     <table mat-table [dataSource]="practicallist" class="mat-elevation-z8 demo-table">
         <ng-container matColumnDef="id">
@@ -29,6 +39,14 @@
             <th mat-header-cell *matHeaderCellDef>subject name</th>
             <td mat-cell *matCellDef="let element">{{element.subject}}</td>
         </ng-container>
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{getstatus(element)}}</td>
+        </ng-container>
+        <ng-container matColumnDef="reply">
+            <th mat-header-cell *matHeaderCellDef>Message</th>
+            <td mat-cell *matCellDef="let element">{{getreply(element)}}</td>
+        </ng-container>
         <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef>Date</th>
             <td mat-cell *matCellDef="let element">{{element.date | date:'dd-MM-yyyy'}}</td>
@@ -38,15 +56,15 @@
             <td mat-cell *matCellDef="let element">
                 <!-- Check if the practical is submitted -->
                 <ng-container *ngIf="isPracticalSubmitted(element)">
-                    <button mat-button class="btn btn-success bg-success">View Image</button>
+                    <button mat-button class="btn btn-success bg-success" (click)="showimage(element.id)">View Image</button>
                 </ng-container>
-                <ng-container *ngIf="!isPracticalSubmitted(element)">
+                <ng-container *ngIf="!isPracticalSubmitted(element) || getstatus(element)==='REJECTED'">
                     <button mat-button (click)="upload(element.id)" class="btn btn-danger bg-danger">Upload Image</button>
                 </ng-container>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displaycolumn"></tr>
-        <tr mat-row *matRowDef="let row; columns: displaycolumn;" [ngClass]="{'bg-success':isPracticalSubmitted(row),'bg-warning':!isPracticalSubmitted(row)}"></tr>
+        <tr mat-row *matRowDef="let row; columns: displaycolumn;" [ngClass]="{'bg-success':isPracticalSubmitted(row),'bg-warning':!isPracticalSubmitted(row) || getstatus(row)==='REJECTED'}"></tr>
     </table>
     <div class="row m-3 justify-content-center mt-5 mb-5">
         <div class="col-2">

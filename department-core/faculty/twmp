@@ -1,130 +1,23 @@
-<div class="row bg-dm-4 m-4 text-light justify-content-center">
-    <div class="col-2 link">
-        <button class="btn" (click)="changepage('btn2')" [ngClass]="{ active: state }">
-            Add Practical
-        </button>
-    </div>
-    <div class="col-1 justify-content-center pt-1 link">|</div>
-    <div class="col-2 text-light link">
-        <button class="btn" (click)="changepage('btn1')" [ngClass]="{ active: !state }">
-            Check Practical
-        </button>
-    </div>
-</div>
-<div *ngIf="state; else btn2">
-    <div class="row bg-dm-6 text-light m-5 mt-2 justify-content-center" style="height: 200px">
-        <div class="row h-25 justify-content-center">
-            <div class="col-4 justify-content-center text-center p-3">
-                <mat-form-field class="w-50 h-100">
-                    <mat-label class="w-25">Topic</mat-label>
-                    <input matInput class="w-100" [(ngModel)]="topic">
-                  </mat-form-field>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-3 justify-content-center text-center pt-5">
-                <mat-label>Select Subject : </mat-label>
-                <mat-select class="w-50 bg-light" [(ngModel)]="selectedsubject">
-                    <mat-option *ngFor="let s of subjects" [value]="s">
-                        {{s}}
-                    </mat-option>
-                </mat-select>
-            </div>
-            <div class="col-3 justify-content-center text-center pt-5">
-                <mat-label>Select Batch : </mat-label>
-                <mat-select class="w-50 bg-light" [(ngModel)]="selectedbatch">
-                    <mat-option *ngFor="let s of batches" [value]="s">
-                        {{s}}
-                    </mat-option>
-                </mat-select>
-            </div>
-            <div class="col-3 justify-content-center text-center pt-5">
-                <mat-label>Select Division : </mat-label>
-                <mat-select class="w-50 bg-light" [(ngModel)]="selecteddivision">
-                    <mat-option value="A">A</mat-option>
-                    <mat-option value="B">B</mat-option>
-                </mat-select>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-2 text-center">
-                <button class="btn bg-dm-3 text-dark" [disabled]="!areSelectionsMade()" (click)="displayvalidstudent()">Take Attandance</button>
-            </div>
-        </div>
-    </div>
-    <div *ngIf="message!=''">
-        <div class="row m-5 mt-2 text-dark justify-content-center bg-dm-3">
-            <div class="col-4 justify-content-center text-center">{{message}}</div>
-        </div>
-    </div>
-    </div>
-</div>
-<ng-template #btn2>
-    <div class="row bg-dm-6 text-light m-5 mt-2 justify-content-center" style="height: 200px">
-        <div class="row justify-content-center">
-            <div *ngIf="data && data.length > 0 && data[0].subjects"
-                class="col-3 justify-content-center text-center pt-5">
-                <mat-label>Select Subject : </mat-label>
-                <mat-select class="w-50 bg-light" [(ngModel)]="selectedsubject">
-                    <mat-option *ngFor="let s of data[0].subjects" [value]="s">
-                        {{s}}
-                    </mat-option>
-                </mat-select>
-            </div>
-            <div *ngIf="data && data.length > 0 && data[0].batches"
-                class="col-3 justify-content-center text-center pt-5">
-                <mat-label>Select Batch : </mat-label>
-                <mat-select class="w-50 bg-light" [(ngModel)]="selectbatch">
-                    <mat-option *ngFor="let s of data[0].batches" [value]="s">
-                        {{s}}
-                    </mat-option>
-                </mat-select>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-2 text-center">
-                <button class="btn bg-dm-3 text-dark" [disabled]="!areSelectionsMade2()" (click)="showattandance()">Show Attandance</button>
-            </div>
-        </div>
-    </div>
-    <div *ngIf="message!=''">
-        <div class="row m-5 mt-2 text-dark justify-content-center bg-dm-3">
-            <div class="col-3 justify-content-center text-center m-3">
-                <mat-label>Select Topic : </mat-label>
-                <mat-select class="w-50 bg-light" [(ngModel)]="selectedlecture" (selectionChange)="changedlecture()">
-                    <mat-option *ngFor="let s of lectures" [value]="s">
-                        {{s}}
-                    </mat-option>
-                </mat-select>
-            </div>
-        </div>
-        <div class="row m-5 mt-1" *ngIf="displaytable">
-            <table mat-table [dataSource]="attandancedata" class="mat-elevation-z8 demo-table">
-                <ng-container matColumnDef="student_id">
-                    <th mat-header-cell *matHeaderCellDef>ID</th>
-                    <td mat-cell *matCellDef="let element">{{element.student_id}}</td>
-                </ng-container>
-                <ng-container matColumnDef="name">
-                    <th mat-header-cell *matHeaderCellDef>Name</th>
-                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
-                </ng-container>
-                <ng-container matColumnDef="fathernumber">
-                    <th mat-header-cell *matHeaderCellDef>Father Contact No,</th>
-                    <td mat-cell *matCellDef="let element">{{element.fathernumber}}</td>
-                </ng-container>
-                <ng-container matColumnDef="lecture_date">
-                    <th mat-header-cell *matHeaderCellDef>lecture date&time</th>
-                    <td mat-cell *matCellDef="let element">{{element.lecture_date}}</td>
-                </ng-container>
-                <tr mat-header-row *matHeaderRowDef="displaycolumns2"></tr>
-                <tr mat-row *matRowDef="let row; columns: displaycolumns2;"></tr>
-            </table>
-            <div class="row m-3 justify-content-center mt-5 mb-5">
-                <div class="col-2">
-                    <p>This is All about</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</ng-template>
+SELECT 
+    sl.student_id AS id,
+    pl.id AS practical_id,
+    pl.description AS topic,
+    st.name AS student_name,
+    sl.submit_time AS submit_date,
+    sl.valid AS status,
+    sl.reply AS reply
+FROM 
+    student_lab_data sl
+JOIN 
+    practical_lab pl ON sl.practical_id = pl.id
+JOIN 
+    lab l ON pl.lab_id = l.id
+JOIN 
+    subject s ON l.subject_code = s.subject_code
+JOIN 
+    student st ON sl.student_id = st.id
+WHERE 
+    s.subject_code = (SELECT subject_code FROM subject WHERE subject_name = 'AOOP')
+    AND l.faculty_id = 1 
+    AND l.sem_code = 22 
+    AND l.division = 'A';

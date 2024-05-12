@@ -13,6 +13,8 @@ export interface Practicallist{
 }
 export interface PracticalStudent{
     practical_id:any;
-    code_file:Blob;
+    code_file:string;
     submit_date:string;
+    status:string;
+    reply:string;
 }

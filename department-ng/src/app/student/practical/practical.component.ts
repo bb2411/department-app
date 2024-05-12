@@ -18,11 +18,14 @@ import { PracticaldataService } from '../controller/practicaldata.service';
   imports:[MatSelectModule,CommonModule,FormsModule,MatTableModule,MatInputModule,MatButtonModule,MatDialogTitle,MatDialogContent,MatDialogActions,MatDialogClose,]
 })
 export class PracticalComponent implements OnInit{
+  practicalselected:PracticalStudent | undefined;
+  imageurl:string | undefined;
+  viewimage=false;
   message=''
   filetoupload:File | undefined;
   practicallist:Practicallist[]=[];
   practicaldata:PracticalStudent[]=[];
-  displaycolumn=['id','description','faculty','subject','date','action'];
+  displaycolumn=['id','description','faculty','subject','date','status','reply','action'];
   practicalidtosubmit=0;
   userid=0;
   uploadstate=false;
@@ -41,7 +44,7 @@ export class PracticalComponent implements OnInit{
     });
   }
   isPracticalSubmitted(practical: Practicallist){
-    return this.practicaldata.some(data=>data.practical_id===practical.id);
+    return this.practicaldata.find(data=>data.practical_id===practical.id);
   }
   isFileValid(): boolean {
     if (!this.filetoupload) {
@@ -50,25 +53,60 @@ export class PracticalComponent implements OnInit{
     return true;
   }
   uploadimage(event:any): void {
-    console.log(event);
     console.log(this.filetoupload);
     if(!this.isFileValid()){
       this.message="invalid image";
       return;
     }
-    this.backend.addpracticaldata(this.userid,this.practicalidtosubmit,this.filetoupload).subscribe((response)=>{
-      this.message=response.message;
-      this.ngOnInit();
-    })  
+    let flag=this.practicaldata.find(i=> i.practical_id===this.practicalidtosubmit);
+    if(!flag){
+      this.backend.addpracticaldata(this.userid,this.practicalidtosubmit,this.filetoupload).subscribe((response)=>{
+        this.message=response.message;
+        this.ngOnInit();
+        this.upload(this.practicalidtosubmit);
+      })  
+    }else{
+      this.backend.updatepracticaldata(this.userid,this.practicalidtosubmit,this.filetoupload).subscribe((response)=>{
+        this.message=response.message;
+        this.ngOnInit();
+        this.upload(this.practicalidtosubmit);
+      })  
+    }
   }
   upload(id:any): void {
+    this.message='';
     if(this.uploadstate){
       this.practicalidtosubmit=0;
       this.uploadstate=false;
     }else{
+      this.viewimage=false;
       this.practicalidtosubmit=id;
       this.uploadstate=true;
     }
+  }
+  showimage(id:any): void {
+    this.message='';
+    if(id===this.practicalselected?.practical_id){
+      this.practicalselected=this.practicaldata.find(i=>i.practical_id===id);
+      console.log(this.practicalselected)
+      this.imageurl='data:image/png;base64,'+this.practicalselected?.code_file;
+      this.viewimage=false;
+      this.practicalselected=undefined;
+    }else{
+      this.practicalselected=this.practicaldata.find(i=>i.practical_id===id);
+      console.log(this.practicalselected)
+      this.imageurl='data:image/png;base64,'+this.practicalselected?.code_file;
+      this.viewimage=true;
+    }
+  }
+  getstatus(element:any){
+    let data=this.practicaldata.find(i=>i.practical_id===element.id);
+    return data?.status;
+  }
+  getreply(element:any){
+    let data=this.practicaldata.find(i=>i.practical_id===element.id);
+    return data?.reply;
+
   }
   constructor(private storage:StorageService,private backend:PracticaldataService,private route:Router){}
 }

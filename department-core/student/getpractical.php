@@ -53,7 +53,9 @@
             $data=[
                 "practical_id"=>$row['practical_id'],
                 "code_file"=>base64_encode($row['code_file']),
-                "submit_date"=>$row['submit_time']
+                "submit_date"=>$row['submit_time'],
+                "reply"=>$row['reply'],
+                "status"=>$row['valid']
             ];
             array_push($practicaldata,$data);
         }

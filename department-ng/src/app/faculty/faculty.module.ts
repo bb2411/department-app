@@ -18,7 +18,7 @@ import { ResultsComponent } from './results/results.component';
     AccountComponent,
     NoticeBoardComponent,
     FacultyComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     FormsModule,

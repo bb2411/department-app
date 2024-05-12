@@ -8,7 +8,7 @@ header("Access-Control-Allow-Credentials: true");
 header("Content-Type:aplication/json");
 use Firebase\JWT\JWT;
 if(isset($_REQUEST['token'])){
-    $token=JWT::decode($_REQUEST['token'],$secretkey,array('HS512'));
+    $token=JWT::decode($_REQUEST['token'],$secretkey);
     if($token['keypass']==decryptData("bhargavdev123456789")){
         echo json_encode(['status'=>200,"msg"=>"user_is_valid"]);
         die;
