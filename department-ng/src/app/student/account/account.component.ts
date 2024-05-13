@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FacultydataService } from '../controller/facultydata.service';
-import { StorageService } from '../controller/storage.service';
+import { StorageService } from '../../faculty/controller/storage.service';
+import { GetstudentdataService } from './../controller/getstudentdata.service';
 
 @Component({
   selector: 'app-account',
@@ -9,9 +9,9 @@ import { StorageService } from '../controller/storage.service';
 })
 export class AccountComponent implements OnInit {
   message='';
-  data:Facultydata | undefined;
+  data:Studentdata | undefined;
   ngOnInit(): void {
-    this.source.getaccount(StorageService.userid).subscribe((response:Facultydata)=>{
+    this.source.getaccount(StorageService.userid).subscribe((response:Studentdata)=>{
       if(response.status!==400){
         this.data=response;
       }else{
@@ -20,17 +20,18 @@ export class AccountComponent implements OnInit {
       console.log(this.data,response);
     })
   }
-  constructor(private source:FacultydataService){}
+  constructor(private source:GetstudentdataService){}
 }
-export interface Facultydata{
+export interface Studentdata{
   name:string;
   id:string;
   email:string;
-  post:string;
-  department:string;
-  education:string;
+  course:string;
+  sem_id:string;
+  division:string;
+  father_number:string;
+  mother_number:string;
   personal_number:string;
   message:string;
   status:number;
 }
-

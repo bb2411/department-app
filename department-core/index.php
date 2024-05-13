@@ -5,6 +5,8 @@
     header("Access-Control-Allow-Credentials: true");
     $requesturi=strtok($_SERVER['REQUEST_URI'],'?');
     $routes=[
+        "/department_app/department-core/faculty/getaccount"=>"./faculty/getaccount.php",
+        "/department_app/department-core/student/getaccount"=>"./student/getaccount.php",
         "/department_app/department-core/student/updatepracticaldata"=>"./student/updatepracticaldata.php",
         "/department_app/department-core/practical/checkedpractical"=>"./faculty/practicalcheckeddata.php",
         "/department_app/department-core/faculty/getpracticaldata"=>"./faculty/getpracticalrecord.php",

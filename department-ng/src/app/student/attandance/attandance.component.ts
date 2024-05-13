@@ -32,6 +32,9 @@ export class AttandanceComponent implements OnInit {
     if(!this.userid){
       this.route.navigate(["auth"]);
     }
+    this.getdata(this.userid);
+  }
+  getdata(userid:any){
     this.controller.getdata(this.userid).subscribe((response:Attandance)=>{
       console.log(response);
       this.data=response;
@@ -51,6 +54,10 @@ export class AttandanceComponent implements OnInit {
     }
   }
   changedsubject(){
+    if(this.selectedsubject==='ALL'){
+      this.getdata(this.userid);
+      return;
+    }
     this.Lecture=this.lectureall.filter(i => i.subject_name===this.selectedsubject);
     this.totallecture=this.Lecture.length;
     const attendedSubject = this.Attandance.filter(attendance => {

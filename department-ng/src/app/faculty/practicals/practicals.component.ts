@@ -4,11 +4,12 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { FacultydataService, res } from '../controller/facultydata.service';
+import { FacultydataService } from '../controller/facultydata.service';
 import { GetpracticaldataService } from '../controller/getpracticaldata.service';
 import { PracticalService } from '../controller/practical.service';
 import { Practicalrecord, Practicalresponse } from '../controller/practicalrecord';
 import { Facultyresponse } from '../facultyresponse';
+import { res } from './../controller/facultydata.service';
 import { StorageService } from './../controller/storage.service';
 @Component({
     standalone: true,
@@ -32,9 +33,6 @@ export class PracticalsComponent implements OnInit{
       this.subjects=response.subjects;
       this.batches=response.batches;
     });
-    console.log(FacultydataService.subject);
-    console.log("practicals");
-    console.log(this.controller.getsubject())
   }
   changepage(whichbtn:String){
     this.message='';
@@ -115,6 +113,11 @@ export class PracticalsComponent implements OnInit{
       this.message=response.message;
       this.practicalrecord_selected=undefined;
       this.viewimage=false;
+      if(response.status===200){
+        this.getpracticalstocheck();
+        this.replymessage='';
+        this.selectedstatus='';
+      }
     });
   }
   constructor(private controller:FacultydataService,private getpracticals:GetpracticaldataService,private api:PracticalService,private storage:StorageService){}

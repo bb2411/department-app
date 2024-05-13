@@ -7,3 +7,8 @@ button{
 .active{
     border-bottom: 2px solid black !important;
 }
+.navbard{
+    z-index: 7 !important;
+    top: 0 !important;
+    position: sticky !important;
+}
